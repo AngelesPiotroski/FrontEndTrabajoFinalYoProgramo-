@@ -1,0 +1,61 @@
+<div class="register">
+  <form class="custom-form" method="post">
+    <h1>Register</h1>
+    <div>
+      <label>Usuario: </label>
+      <input type="email" [(ngModel)]="email" name="email" placeholder="Email" required="required" />
+      <input type="password" [(ngModel)]="password" name="password" placeholder="Password" required="required" />
+      <input type="password" [(ngModel)]="confirmPassword" name="password" placeholder="Repeat the password"required="required" />
+    </div>
+    <div>
+      <label>Datos Personales: </label>
+      <input type="text" name="nombre" id="nombre"  placeholder="Nombre" required="required" />
+      <input type="text" name="apellido" id="apellido" placeholder="Apellido" required="required" />
+      <input type="number" name="dni" id="dni" placeholder="Dni" required="required" />
+      <input type="text" name="domicilio"id="domicilio"  placeholder="Domicilio" required="required" />
+      <input type="date" name="FechaNacimiento" id="FechaNacimiento"  placeholder="Fecha Nacimiento" required="required" />
+      <input type="text" name="AboutMe" id="AboutMe" placeholder="About Me" required="required" />
+      <input type="text" name="LugarNacimiento" id="LugarNacimiento" placeholder="Lugar Nacimiento" required="required" />
+      <input type="number" name="Telefono" id="Telefono" placeholder="Telefono" required="required" />
+      <input type="text" name="FotoPerfil" id="FotoPerfil" placeholder="Url de su foto de Perfil" required="required" />
+      <input type="text" name="FotoPortada" id="FotoPortada"  placeholder="Url de su foto portada" required="required" />
+    </div>
+
+    <div>
+      <label>Proyectos:</label>
+      <input type="text" name="nombreProyecto" id="nombreProyecto" placeholder="nombre del Proyecto" required="required" />
+      <input type="text" name="descripcionProyecto"  id="descripcionProyecto" placeholder="Descripcion del proyecto" required="required" />
+      <input type="text" name="urlProyecto" id="urlProyecto" placeholder="url del proyecto" required="required" />
+      <input type="text" name="urlImagenProyecto" id="urlImagenProyecto" placeholder="url de imagen del proyecto" required="required" />
+    </div>
+    
+    <div>
+      <label>Educacioó:</label>
+      <input type="text" name="instituto"  id="instituto" placeholder="instituto" required="required" />
+      <input type="text" name="titulo"  id="titulo" placeholder="Titulo obtenido" required="required" />
+      <input type="text" name="ubicacionEducacion"  id="ubicacionEducacion" placeholder="Ubicacion del instituto" required="required" />
+      <input type="text" name="descripcionEducacion" id="descripcionEducacion" placeholder="Descripcion del titulo obtenido" required="required" />
+      <input type="date" name="fechaInicioEducacion" id="fechaInicioEducacion" placeholder="Fecha de inicio " required="required" />
+      <input type="date" name="fechaFinEducacion" id="fechaFinEducacion" placeholder="Fecha de fin" required="required" />
+    </div>
+
+    <div>
+      <label>Tecnologias:</label>
+      <input type="text" name="nombreTecnologia" id="nombreTecnologia" placeholder="Nombre de la tecnologia" required="required" />
+      <input type="text" name="descripcionTecnologia" id="descripcionTecnologia" placeholder="Descripcion de la tecnologia" required="required" />
+      <input type="text" name="porcentaje" id="porcentaje" placeholder="Porcentaje " required="required" />
+    </div>
+    
+    <div>
+      <label>Trabajos:</label>
+      <input type="text" name="nombreTrabajo" id="nombreTrabajo" placeholder="Nombre del trabajo" required="required" />
+      <input type="text" name="puesto"  id="puesto" placeholder="Puesto ocupado" required="required" />
+      <input type="text" name="ubicacionTrabajo" id="ubicacionTrabajo" placeholder="Ubicacion del trabajo " required="required" />
+      <input type="text" name="tareaTrabajo" id="tareaTrabajo" placeholder="Tarea realizada:" required="required" />
+      <input type="date" name="fechaInicioTrabajo" id="fechaInicioTrabajo" placeholder="Fecha de inicio " required="required" />
+      <input type="date" name="fechaFinTrabajo" id="fechaFinTrabajo" placeholder="Fecha de fin" required="required" />
+    </div>
+
+    <!-- <button type="submit" (click)="register()">Register</button> -->
+  </form>
+</div>

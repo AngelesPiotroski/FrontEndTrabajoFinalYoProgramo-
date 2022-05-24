@@ -1,0 +1,18 @@
+ <h2>Lista de Personas</h2>
+<table class="table table-striped">
+    <thead class="table-dark">
+        <tr>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>DNI</th>
+        </tr>
+    </thead>
+
+    <tbody class="table-white">
+        <tr *ngFor="let persona of personas">
+            <td>{{persona.nombre}}</td>     
+            <td>{{persona.apellido}}</td>   
+            <td>{{persona.dni}}</td>          
+        </tr>
+    </tbody>
+</table> 

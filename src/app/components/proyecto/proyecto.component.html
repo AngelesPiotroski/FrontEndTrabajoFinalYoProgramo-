@@ -1,0 +1,82 @@
+<section id="portfolio" class="portfolio section-bg">
+  <div class="container">
+    <div class="section-title">
+      <h2>Proyectos <button style="margin: 5px;" class="btn botonesEdit btn-success" *ngIf="ulogged!=''"(click)=divAgregar()><i
+            class="bi bi-plus"></i></button></h2>
+      <!--agregar proyecto-->
+      <div class="card col-md-6" id="agregarProy" style="margin: 5px;   display: none;">
+        <div class="card-body">
+          <h5 class="titulo">{{ accion }} Proyecto </h5>
+          <form [formGroup]="form" (ngSubmit)="guardarProyecto()">
+            <div class="input-group input-group-lg mb-3">
+              <span class="input-group-text">
+                <i class="fas fa-user" [class.green-icon]="this.form.get('nombre')?.valid"
+                  [class.red-icon]="this.form.get('nombre')?.invalid && this.form.get('nombre')?.touched"></i>
+              </span>
+              <input formControlName="nombre" type="text" class="form-control" placeholder="Nombre">
+            </div>
+
+            <div class="input-group input-group-lg mb-3">
+              <span class="input-group-text">
+                <i class="fas fa-user" [class.green-icon]="this.form.get('descripcion')?.valid"
+                  [class.red-icon]="this.form.get('descripcion')?.invalid && this.form.get('descripcion')?.touched"></i>
+              </span>
+              <input formControlName="descripcion" type="text" class="form-control" placeholder="Descripcion">
+            </div>
+
+            <div class="input-group input-group-lg mb-3">
+              <span class="input-group-text">
+                <i class="fas fa-user" [class.green-icon]="this.form.get('url')?.valid"
+                  [class.red-icon]="this.form.get('url')?.invalid && this.form.get('url')?.touched"></i>
+              </span>
+              <input formControlName="url" type="text" class="form-control" placeholder="url">
+            </div>
+
+            <div class="input-group input-group-lg mb-3">
+              <span class="input-group-text">
+                <i class="fas fa-user" [class.green-icon]="this.form.get('urlImagen')?.valid"
+                  [class.red-icon]="this.form.get('urlImagen')?.invalid && this.form.get('urlImagen')?.touched"></i>
+              </span>
+              <input formControlName="urlImagen" type="text" class="form-control" placeholder="urlImagen">
+            </div>
+
+
+            <div class="d-grid gap-2">
+              <button [disabled]="this.form.invalid" type="submit" class="btn btn-success btn-lg">
+                <i class="fas fa-database"></i>&nbsp; Guardar</button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!--front-->
+    </div>
+    <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="100" *ngFor="let proyecto of proyectos">
+
+      <div class="col-md-4 portfolio-item filter-app">
+        <div class="row">
+          <div class="col-md-8">
+            <h4>{{proyecto.nombre}} </h4>
+          </div>
+          <div class="col-md-2">
+            <button style="margin: 5px;"*ngIf="ulogged!=''" (click)="editarProyecto(proyecto)" class="btn botonesEdit btn-primary"><i
+                class="bi bi-pen"></i></button>
+          </div>
+          <div class="col-md-2">
+            <button style="margin: 5px;" *ngIf="ulogged!=''"(click)="eliminarProyecto(proyecto.id_proyecto)"
+              class="btn botonesEdit btn-danger"><i class="bi bi-trash"></i></button>
+          </div>
+        </div>
+        <h5 style="background-color: gris;">Realizado en: {{proyecto.fechaRealizacion | date:'yyyy'}} </h5>
+        <a>{{proyecto.descripcion}}</a>
+        <div class="portfolio-wrap">
+          <img src="{{proyecto.urlImagen}}" class="img-fluid" alt="" style="max-width: 100%; height: auto;">
+          <div class="portfolio-links">
+            <a href="{{proyecto.url}}" target="_blank" data-gallery="portfolioGallery" class="portfolio-lightbox"
+              title="Ver en Repositorio"><i class="bi bi-link-45deg"></i></a>
+            <a data-gallery="portfolioGallery" class="portfolio-lightbox"><i class="bi bi-github"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

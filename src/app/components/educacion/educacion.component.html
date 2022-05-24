@@ -1,0 +1,166 @@
+<section id="resume" class="resume">
+  <div class="container">
+
+    <div class="section-title">
+      <h2>Educación <button style="margin: 5px;" class="btn botonesEdit btn-success" *ngIf="ulogged!=''" (click)=divAgregar()><i class="bi bi-plus"></i></button></h2>
+    </div>
+    <div class="row justify-content-center">
+      <!--agregar educacion -->
+      <div class="card col-lg-5" id="agregarEdu" style="margin: 5px; display: none;">
+        <div class="card-body">
+          <h5 class="titulo">{{ accionEdu }} Educacion </h5>
+          <form [formGroup]="form" (ngSubmit)="guardarEducacion()">
+            <div class="input-group input-group-lg mb-3">
+              <span class="input-group-text">
+                <i class="fas fa-user" [class.green-icon]="this.form.get('titulo')?.valid"
+                  [class.red-icon]="this.form.get('titulo')?.invalid && this.form.get('titulo')?.touched"></i>
+              </span>
+              <input formControlName="titulo" type="text" class="form-control" placeholder="Titulo">
+            </div>
+
+            <div class="input-group input-group-lg mb-3">
+              <span class="input-group-text">
+                <i class="fas fa-user" [class.green-icon]="this.form.get('instituto')?.valid"
+                  [class.red-icon]="this.form.get('instituto')?.invalid && this.form.get('instituto')?.touched"></i>
+              </span>
+              <input formControlName="instituto" type="text" class="form-control" placeholder="Instituto">
+            </div>
+
+            <div class="input-group input-group-lg mb-3">
+              <span class="input-group-text">
+                <i class="fas fa-user" [class.green-icon]="this.form.get('ubicacion')?.valid"
+                  [class.red-icon]="this.form.get('ubicacion')?.invalid && this.form.get('ubicacion')?.touched"></i>
+              </span>
+              <input formControlName="ubicacion" type="text" class="form-control" placeholder="ubicacion">
+            </div>
+
+            <div class="input-group input-group-lg mb-3">
+              <span class="input-group-text">
+                <i class="fas fa-user" [class.green-icon]="this.form.get('descripcion')?.valid"
+                  [class.red-icon]="this.form.get('descripcion')?.invalid && this.form.get('descripcion')?.touched"></i>
+              </span>
+              <input formControlName="descripcion" type="text" class="form-control" placeholder="Descripcion">
+            </div>
+
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="input-group input-group-lg mb-3">
+                  <span class="input-group-text">
+                    <i class="fas fa-calendar-alt" [class.green-icon]="this.form.get('fechaInicio')?.valid"
+                      [class.red-icon]="this.form.get('fechaInicio')?.invalid && this.form.get('fechaInicio')?.touched"></i>
+                  </span>
+                  <input formControlName="fechaInicio" maxlength="10" type="text" class="form-control"
+                    placeholder="Inicio">
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="input-group input-group-lg mb-3">
+                  <span class="input-group-text">
+                    <i class="fas fa-calendar-alt" [class.green-icon]="this.form.get('fechaFin')?.valid"
+                      [class.red-icon]="this.form.get('fechaFin')?.invalid && this.form.get('fechaFin')?.touched"></i>
+                  </span>
+                  <input formControlName="fechaFin" maxlength="10" type="text" class="form-control" placeholder="Fin ">
+                </div>
+              </div>
+            </div>
+            <div class="d-grid gap-2">
+              <button [disabled]="this.form.invalid" type="submit" class="btn btn-success btn-lg">
+                <i class="fas fa-database"></i>&nbsp; Guardar</button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- agregar trabajo -->
+      <div class="card col-lg-5" id="agregarTrab" style="margin: 5px;   display: none;">
+        <div class="card-body">
+          <h5 class="titulo">{{ accionTrab }} Trabajo </h5>
+          <form [formGroup]="form_trab" (ngSubmit)="guardarTrabajo()">
+            <div class="input-group input-group-lg mb-3">
+              <span class="input-group-text">
+                <i class="fas fa-user" [class.green-icon]="this.form_trab.get('nombreTrabajo')?.valid"
+                  [class.red-icon]="this.form_trab.get('nombreTrabajo')?.invalid && this.form_trab.get('nombreTrabajo')?.touched"></i>
+              </span>
+              <input formControlName="nombreTrabajo" type="text" class="form-control" placeholder="nombre Trabajo">
+            </div>
+
+            <div class="input-group input-group-lg mb-3">
+              <span class="input-group-text">
+                <i class="fas fa-user" [class.green-icon]="this.form_trab.get('puesto')?.valid"
+                  [class.red-icon]="this.form_trab.get('puesto')?.invalid && this.form_trab.get('puesto')?.touched"></i>
+              </span>
+              <input formControlName="puesto" type="text" class="form-control" placeholder="Puesto">
+            </div>
+
+            <div class="input-group input-group-lg mb-3">
+              <span class="input-group-text">
+                <i class="fas fa-user" [class.green-icon]="this.form_trab.get('ubicacionTrabajo')?.valid"
+                  [class.red-icon]="this.form_trab.get('ubicacionTrabajo')?.invalid && this.form_trab.get('ubicacionTrabajo')?.touched"></i>
+              </span>
+              <input formControlName="ubicacionTrabajo" type="text" class="form-control" placeholder="ubicacionTrabajo">
+            </div>
+
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="input-group input-group-lg mb-3">
+                  <span class="input-group-text">
+                    <i class="fas fa-calendar-alt" [class.green-icon]="this.form_trab.get('fechaInicioTrabajo')?.valid"
+                      [class.red-icon]="this.form_trab.get('fechaInicioTrabajo')?.invalid && this.form_trab.get('fechaInicioTrabajo')?.touched"></i>
+                  </span>
+                  <input formControlName="fechaInicioTrabajo" maxlength="10" type="text" class="form-control"
+                    placeholder="Inicio">
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="input-group input-group-lg mb-3">
+                  <span class="input-group-text">
+                    <i class="fas fa-calendar-alt" [class.green-icon]="this.form_trab.get('fechaFinTrabajo')?.valid"
+                      [class.red-icon]="this.form_trab.get('fechaFinTrabajo')?.invalid && this.form_trab.get('fechaFinTrabajo')?.touched"></i>
+                  </span>
+                  <input formControlName="fechaFinTrabajo" maxlength="10" type="text" class="form-control"
+                    placeholder="Fin ">
+                </div>
+              </div>
+            </div>
+            <div class="d-grid gap-2">
+              <button [disabled]="this.form_trab.invalid" type="submit" class="btn  btn-success btn-lg">
+                <i class="fas fa-database"></i>&nbsp; Guardar</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- front-->
+    <div class="row">
+      <div class="col-lg-6" data-aos="fade-up">
+        <h3 class="resume-title">Estudios </h3>
+        <div class="resume-item" *ngFor="let educacion of educaciones">
+          <h4>{{educacion.titulo}} <button style="margin: 5px;" *ngIf="ulogged!=''" (click)="editarEducacion(educacion)" class="btn botonesEdit btn-primary"><i
+                class="bi bi-pen"></i></button>
+            <button style="margin: 5px;"*ngIf="ulogged!=''"  (click)="eliminarEducacion(educacion.id_educacion)" class="btn botonesEdit btn-danger"><i
+                class="bi bi-trash"></i></button>
+          </h4>
+          <h5>{{educacion.fechaInicio | date:'yyyy'}} - {{educacion.fechaFin | date:'yyyy'}}</h5>
+          <p>{{educacion.instituto}}</p>
+          <p><em>{{educacion.ubicacion}} </em></p>
+          <p>{{educacion.descripcion}}</p>
+        </div>
+      </div>
+      <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+        <h3 class="resume-title">Experiencias </h3>
+
+        <div class="resume-item" *ngFor="let trabajo of trabajos">
+          <h4>{{trabajo.puesto}} <button style="margin: 5px;" *ngIf="ulogged!=''" (click)="editarTrabajo(trabajo)" class="btn botonesEdit btn-primary"><i
+                class="bi bi-pen"></i></button>
+            <button style="margin: 5px;" *ngIf="ulogged!=''"  (click)="eliminarTrabajo(trabajo.id_trabajo)" class="btn botonesEdit btn-danger"><i
+                class="bi bi-trash"></i></button>
+          </h4>
+          <h5>{{trabajo.fechaInicio | date:'yyyy' }} - {{trabajo.fechaFin | date:'yyyy'}}</h5>
+          <p><em> {{trabajo.nombre}}</em></p>
+          <p><em>{{trabajo.ubicacion}} </em></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

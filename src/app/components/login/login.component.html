@@ -1,0 +1,23 @@
+<div class="login">
+  <form class="custom-form" [formGroup]="form" (ngSubmit)="login()">
+    <h1>Login</h1>
+    <div class="input-group input-group-lg mb-3">
+     
+        <i class="fas fa-user" [class.green-icon]="this.form.get('email')?.valid"
+          [class.red-icon]="this.form.get('email')?.invalid && this.form.get('email')?.touched"></i>
+     
+      <input formControlName="email" type="email" class="form-control" placeholder="Email">
+    </div>
+    <div class="input-group input-group-lg mb-3">
+     
+        <i class="fas fa-user" [class.green-icon]="this.form.get('contrasena')?.valid"
+          [class.red-icon]="this.form.get('contrasena')?.invalid && this.form.get('contrasena')?.touched"></i>
+     
+      <input formControlName="contrasena" type="password" class="form-control" placeholder="Contraseña">
+    </div>
+    <div class="d-grid gap-2">
+      <button [disabled]="this.form.invalid" type="submit" class="btn btn-success btn-lg">
+        <i class="fas fa-database"></i>&nbsp; Login</button>
+    </div>
+  </form>
+</div>
