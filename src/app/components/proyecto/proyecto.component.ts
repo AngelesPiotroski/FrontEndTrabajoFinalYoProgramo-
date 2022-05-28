@@ -23,7 +23,7 @@ export class ProyectoComponent implements OnInit {
     this.form = this.fb.group({
       nombre: ['', Validators.required],
       url: ['', Validators.required],
-      urlImagen: ['', Validators.required],
+      urlImagen: [''],
       descripcion: ['', Validators.required],
       fechaRealizacion: ['', Validators.required],
     });
@@ -64,7 +64,6 @@ export class ProyectoComponent implements OnInit {
         this.toastr.success('El proyecto fue registrada con exito!', 'Proyecto Registrada');
         this.obtenerProyectos();
         this.form.reset();
-        window.location.reload();  
       }, error => {
         this.toastr.error('Opss.. ocurrio un error', 'Error')
         console.log(error);

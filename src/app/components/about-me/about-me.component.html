@@ -2,7 +2,7 @@
   <div class="container">
 
     <div class="section-title" *ngFor="let persona of personas">
-      <h2>Sobre mi <button style="margin: 5px;"  routerLink="/form" *ngIf="ulogged!=''" (click)="editarPersona(persona)" class="btn botonesEdit btn-primary"><i class="bi bi-pen"></i></button></h2>
+      <h2>Sobre mi <button style="margin: 5px;"   *ngIf="ulogged!=''" (click)="editarPersona(persona)" class="btn botonesEdit btn-primary"><i class="bi bi-pen"></i></button></h2>
       <p>{{persona.aboutMe}}</p>
     </div>
 
@@ -123,7 +123,7 @@
           </div>
           <div class="col-lg-6">
             <ul *ngFor="let persona of personas">
-              <li><i class="bi bi-chevron-right"></i> <strong>Edad:</strong> <span > sad</span></li>
+              <li><i class="bi bi-chevron-right"></i> <strong>Edad:</strong> <span > {{edad}}</span></li>
               <li><i class="bi bi-chevron-right"></i> <strong>Telefono:</strong> <span>{{persona.telefono}}</span></li>
               <li><i class="bi bi-chevron-right"></i> <strong>Email:</strong> <span>{{persona.email}}</span></li>
 

@@ -1,6 +1,6 @@
 
 <section *ngFor="let persona of personas" id="hero" class="d-flex flex-column justify-content-center align-items-center"
-  style="background: url({{persona.fotoPortada}}) top center; size: auto;">
+  style="background: url({{persona.fotoPortada}}) top center; background-size: cover; ">
   
   <div class="hero-container" data-aos="fade-in">
     <h1>{{persona.nombre + " " + persona.apellido}}</h1>

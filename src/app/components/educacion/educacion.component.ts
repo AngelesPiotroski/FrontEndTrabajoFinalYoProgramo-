@@ -30,20 +30,20 @@ export class EducacionComponent implements OnInit {
 
   constructor(public loginService: LoginService, private router: Router, private educacionServicio: EducacionService, private trabajoServicio: TrabajoService, private fb: FormBuilder, private toastr: ToastrService) {
     this.form = this.fb.group({
-      instituto: ['', Validators.required],
-      ubicacion: ['', Validators.required],
-      titulo: ['', Validators.required],
-      descripcion: ['', Validators.required],
+      instituto: ['', [Validators.required,Validators.maxLength(100)]],
+      ubicacion: ['', [Validators.required,Validators.maxLength(100)]],
+      titulo: ['', [Validators.required,Validators.maxLength(100)]],
+      descripcion: [''],
       fechaInicio: ['', [Validators.required, Validators.maxLength(10), Validators.minLength(10)]],
-      fechaFin: ['', [Validators.required, Validators.maxLength(10), Validators.minLength(10)]],
+      fechaFin: ['', [ Validators.maxLength(10), Validators.minLength(10)]],
     });
 
     this.form_trab = this.fb.group({
-      nombreTrabajo: ['', Validators.required],
-      ubicacionTrabajo: ['', Validators.required],
-      puesto: ['', Validators.required],
+      nombreTrabajo: ['', [Validators.required,Validators.maxLength(100)]],
+      ubicacionTrabajo: ['', [Validators.required,Validators.maxLength(100)]],
+      puesto: ['', [Validators.required,Validators.maxLength(100)]],
       fechaInicioTrabajo: ['', [Validators.required, Validators.maxLength(10), Validators.minLength(10)]],
-      fechaFinTrabajo: ['', [Validators.required, Validators.maxLength(10), Validators.minLength(10)]],
+      fechaFinTrabajo: ['', [ Validators.maxLength(10), Validators.minLength(10)]],
     })
   }
 
@@ -84,14 +84,13 @@ export class EducacionComponent implements OnInit {
       fechaFin: this.form.get('fechaFin')?.value,
       fechaInicio: this.form.get('fechaInicio')?.value,
     }
-
+   
     if (this.id_educacion == undefined) {
       // Agregamos una nueva Educacion
       this.educacionServicio.saveEducacion(Educacion).subscribe(data => {
         this.toastr.success('La Educacion fue registrada con exito!', 'Educacion Registrada');
         this.obtenerEducaciones();
         this.form.reset();
-        window.location.reload();
       }, error => {
         this.toastr.error('Opss.. ocurrio un error', 'Error')
         console.log(error);
@@ -99,6 +98,7 @@ export class EducacionComponent implements OnInit {
     } else {
 
       Educacion.id_educacion = this.id_educacion;
+     
       // Editamos Educacion
       this.educacionServicio.updateEducacion(this.id_educacion, Educacion).subscribe(data => {
         this.form.reset();
@@ -155,7 +155,6 @@ export class EducacionComponent implements OnInit {
         this.toastr.success('El trabajo fue registrada con exito!', 'Trabajo Registrada');
         this.obtenerTrabajos();
         this.form_trab.reset();
-        window.location.reload();
       }, error => {
         this.toastr.error('Opss.. ocurrio un error', 'Error')
         console.log(error);

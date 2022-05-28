@@ -10,6 +10,7 @@
         <div class="card-body">
           <h5 class="titulo">{{ accionEdu }} Educacion </h5>
           <form [formGroup]="form" (ngSubmit)="guardarEducacion()">
+            
             <div class="input-group input-group-lg mb-3">
               <span class="input-group-text">
                 <i class="fas fa-user" [class.green-icon]="this.form.get('titulo')?.valid"
@@ -141,7 +142,9 @@
             <button style="margin: 5px;"*ngIf="ulogged!=''"  (click)="eliminarEducacion(educacion.id_educacion)" class="btn botonesEdit btn-danger"><i
                 class="bi bi-trash"></i></button>
           </h4>
-          <h5>{{educacion.fechaInicio | date:'yyyy'}} - {{educacion.fechaFin | date:'yyyy'}}</h5>
+          <h5 *ngIf="educacion.fechaFin==null">{{educacion.fechaInicio | date:'yyyy'}} - Actualidad</h5>
+          <h5 *ngIf="educacion.fechaFin!=null">{{educacion.fechaInicio | date:'yyyy' }} - {{educacion.fechaFin | date:'yyyy' }}  </h5>
+
           <p>{{educacion.instituto}}</p>
           <p><em>{{educacion.ubicacion}} </em></p>
           <p>{{educacion.descripcion}}</p>
@@ -156,7 +159,9 @@
             <button style="margin: 5px;" *ngIf="ulogged!=''"  (click)="eliminarTrabajo(trabajo.id_trabajo)" class="btn botonesEdit btn-danger"><i
                 class="bi bi-trash"></i></button>
           </h4>
-          <h5>{{trabajo.fechaInicio | date:'yyyy' }} - {{trabajo.fechaFin | date:'yyyy'}}</h5>
+          <h5 *ngIf="trabajo.fechaFin==null">{{trabajo.fechaInicio | date:'yyyy' }} - Actualidad  </h5>
+          <h5 *ngIf="trabajo.fechaFin!=null">{{trabajo.fechaInicio | date:'yyyy' }} - {{trabajo.fechaFin | date:'yyyy' }}  </h5>
+
           <p><em> {{trabajo.nombre}}</em></p>
           <p><em>{{trabajo.ubicacion}} </em></p>
         </div>

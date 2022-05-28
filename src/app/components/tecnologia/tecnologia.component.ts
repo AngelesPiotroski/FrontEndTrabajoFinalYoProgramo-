@@ -25,6 +25,10 @@ export class TecnologiaComponent implements OnInit {
       porcentaje: ['', Validators.required],
       descripcion: ['', Validators.required],
     });
+ 
+  
+  
+  
   }
 
   ngOnInit(): void {
@@ -62,7 +66,6 @@ export class TecnologiaComponent implements OnInit {
         this.toastr.success('La Tecnologia fue registrada con exito!', 'Tecnologia Registrada');
         this.form.reset();
         this.obtenerTecnologias();
-        window.location.reload();
 
       }, error => {
         this.toastr.error('Opss.. ocurrio un error', 'Error')

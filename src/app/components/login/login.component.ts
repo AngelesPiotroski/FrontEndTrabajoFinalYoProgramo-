@@ -43,37 +43,5 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
   }
-
-  // constructor(private userServicio: UserService, private fb: FormBuilder, private toastr: ToastrService, private router: Router) {
-  //   this.form = this.fb.group({
-  //     email: ['', Validators.required],
-  //     contrasena: ['', Validators.required],
-  //   });
-  // }
-
-  // login() {
-  //   const Usuario: any = {
-  //     email: this.form.get('email')?.value,
-  //     contrasena: this.form.get('contrasena')?.value,
-  //   }
-
-  //   this.userServicio.login(Usuario).subscribe(dato => {
-  //     let myObjStr = JSON.stringify(dato);
-  //     let result= JSON.parse(myObjStr);
-
-  //     if(result != null){
-  //       this.toastr.success('Bienvenido', 'Sesion iniciada');
-  //       this.router.navigate(['mi-portfolio/']);
-  //     }else{
-  //       this.toastr.error('No se encontró al usuario ', 'Error');
-  //     }
-  //   }, error => {
-  //     this.toastr.error('Opss.. ocurrio un error al iniciar sesion', 'Error');
-  //     console.log(error);
-  //   })
-  // }
-
-
 }

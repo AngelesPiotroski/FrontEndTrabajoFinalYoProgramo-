@@ -18,6 +18,8 @@ export class AboutMeComponent implements OnInit {
   form_trab: FormGroup;
   id_persona: number | undefined;
   ulogged:string = "";
+  edad:number;
+  per:Persona;
 
   constructor(public loginService: LoginService,private router:Router, private personaServicio: PersonaService, private fb: FormBuilder, private toastr: ToastrService) {
     this.form = this.fb.group({
@@ -30,7 +32,7 @@ export class AboutMeComponent implements OnInit {
       dni: ['', Validators.required],
       domicilio: ['', Validators.required],
       fotoPerfil: ['', Validators.required],
-      aboutMe: ['', Validators.required],
+      aboutMe: ['',[ Validators.required, Validators.maxLength(230)]],
       fechaNacimiento: ['', [Validators.required, Validators.maxLength(10), Validators.minLength(10)]],
     });
   }
@@ -52,6 +54,16 @@ export class AboutMeComponent implements OnInit {
   private obtenerPersonas() {
     this.personaServicio.getListaPersonas().subscribe(dato => {
       this.personas = dato;
+      const today: Date = new Date();
+
+      this.personas.forEach(p =>  this.per=p);
+      const birthDate: Date = new Date(this.per.fechaNacimiento);
+      let age: number = today.getFullYear() - birthDate.getFullYear();
+      const month: number = today.getMonth() - birthDate.getMonth();
+      if (month < 0 || (month === 0 && today.getDate() < birthDate.getDate())) {
+        age--;
+      }
+      this.edad = age;
     })
   }
 

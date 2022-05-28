@@ -1,8 +1,8 @@
 <section id="portfolio" class="portfolio section-bg">
   <div class="container">
     <div class="section-title">
-      <h2>Proyectos <button style="margin: 5px;" class="btn botonesEdit btn-success" *ngIf="ulogged!=''"(click)=divAgregar()><i
-            class="bi bi-plus"></i></button></h2>
+      <h2>Proyectos <button style="margin: 5px;" class="btn botonesEdit btn-success" *ngIf="ulogged!=''"
+          (click)=divAgregar()><i class="bi bi-plus"></i></button></h2>
       <!--agregar proyecto-->
       <div class="card col-md-6" id="agregarProy" style="margin: 5px;   display: none;">
         <div class="card-body">
@@ -40,7 +40,14 @@
               <input formControlName="urlImagen" type="text" class="form-control" placeholder="urlImagen">
             </div>
 
-
+            <div class="input-group input-group-lg mb-3">
+              <span class="input-group-text">
+                <i class="fas fa-calendar-alt" [class.green-icon]="this.form.get('fechaRealizacion')?.valid"
+                  [class.red-icon]="this.form.get('fechaRealizacion')?.invalid && this.form.get('fechaRealizacion')?.touched"></i>
+              </span>
+              <input formControlName="fechaRealizacion" maxlength="10" type="text" class="form-control"
+                placeholder="Fecha de Realizacion">
+            </div>
             <div class="d-grid gap-2">
               <button [disabled]="this.form.invalid" type="submit" class="btn btn-success btn-lg">
                 <i class="fas fa-database"></i>&nbsp; Guardar</button>
@@ -48,29 +55,25 @@
           </form>
         </div>
       </div>
-
-      <!--front-->
     </div>
-    <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="100" *ngFor="let proyecto of proyectos">
-
-      <div class="col-md-4 portfolio-item filter-app">
-        <div class="row">
-          <div class="col-md-8">
-            <h4>{{proyecto.nombre}} </h4>
-          </div>
-          <div class="col-md-2">
-            <button style="margin: 5px;"*ngIf="ulogged!=''" (click)="editarProyecto(proyecto)" class="btn botonesEdit btn-primary"><i
-                class="bi bi-pen"></i></button>
-          </div>
-          <div class="col-md-2">
-            <button style="margin: 5px;" *ngIf="ulogged!=''"(click)="eliminarProyecto(proyecto.id_proyecto)"
-              class="btn botonesEdit btn-danger"><i class="bi bi-trash"></i></button>
-          </div>
+    <!--front-->
+    <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="100">
+      <div class="col-md-4 portfolio-item" *ngFor="let proyecto of proyectos" style="margin-top: 30px;  ">
+        <div class="resume-item ">
+          <h5>{{proyecto.nombre}} </h5>
+          <button style="margin: 5px; width: 30%;" *ngIf="ulogged!=''" (click)="editarProyecto(proyecto)"
+            class="btn botonesEdit btn-primary"><i class="bi bi-pen"></i></button>
+          <button style="margin: 5px; width: 30%;" *ngIf="ulogged!=''" (click)="eliminarProyecto(proyecto.id_proyecto)"
+            class="btn botonesEdit btn-danger"><i class="bi bi-trash"></i></button>
         </div>
         <h5 style="background-color: gris;">Realizado en: {{proyecto.fechaRealizacion | date:'yyyy'}} </h5>
         <a>{{proyecto.descripcion}}</a>
         <div class="portfolio-wrap">
-          <img src="{{proyecto.urlImagen}}" class="img-fluid" alt="" style="max-width: 100%; height: auto;">
+          <img *ngIf="proyecto.urlImagen=='' || proyecto.urlImagen==null"
+            src="https://th.bing.com/th/id/OIP.sQMrNJUhwybBFwvx93APZQHaE8?pid=ImgDet&rs=1" class="img-fluid" alt=""
+            style="max-width: 100%; height: 250px; ">
+          <img *ngIf="proyecto.urlImagen!='' && proyecto.urlImagen!=null" src="{{proyecto.urlImagen}}" class="img-fluid"
+            alt="" style="max-width: 100%; width: auto; height: auto; ">
           <div class="portfolio-links">
             <a href="{{proyecto.url}}" target="_blank" data-gallery="portfolioGallery" class="portfolio-lightbox"
               title="Ver en Repositorio"><i class="bi bi-link-45deg"></i></a>
@@ -80,3 +83,4 @@
       </div>
     </div>
   </div>
+</section>

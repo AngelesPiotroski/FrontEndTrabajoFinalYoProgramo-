@@ -25,6 +25,7 @@ export class EducacionService {
   }
 
   updateEducacion(id_educacion: number, educacion: any): Observable<any> {
+    console.log(this.baseURL +"personas/actualizarEducacion/1/educacion/" + id_educacion);
     return this.httpClient.put(this.baseURL +"personas/actualizarEducacion/1/educacion/"+  id_educacion, educacion, {responseType: 'text'});
   }
 

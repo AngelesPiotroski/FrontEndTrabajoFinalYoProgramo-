@@ -17,24 +17,6 @@ export class FooterComponent implements OnInit {
     this.ulogged = this.loginService.getUserLogged();
   }
 
-  public divAgregar() {
-    if ($('#btnLogin').is(":hidden")) {
-      $('#btnLogin').css('display', 'block');
-      $('#btnLogout').css('display', 'none');
-    } else {
-      $('#btnLogin').css('display', 'none');
-      $('#btnLogout').css('display', 'block');
-    }
-  }
-
-  // loguearse() {
-  //   this.divAgregar();
-  // }
-
-  // desloguearse() {
-  //  this.divAgregar();
-  // }
-
   salir():void {
     this.loginService.deleteToken();
     this.ulogged = "";
@@ -45,6 +27,4 @@ export class FooterComponent implements OnInit {
   
     this.router.navigate(['/login'])
   }
-
-
 }
