@@ -7,8 +7,7 @@ import { CookieService } from "ngx-cookie-service";
   providedIn: 'root'
 })
 export class LoginService {
-
-  private baseURL = "http://localhost:8080/api/v1/";
+  private baseURL = "https://backendargprog.herokuapp.com/api/v1/";
 
   constructor(private httpClient: HttpClient,private cookies: CookieService) { }
 

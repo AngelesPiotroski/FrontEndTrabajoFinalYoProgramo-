@@ -1,5 +1,5 @@
 export class Contacto {
-    id?: number;
+    id_contacto?: number;
     nombre: String;
     url: String;
     

@@ -27,6 +27,8 @@ export class ProyectoComponent implements OnInit {
       descripcion: ['', Validators.required],
       fechaRealizacion: ['', Validators.required],
     });
+
+    this.obtenerProyectos();
    }
 
   ngOnInit(): void {
@@ -46,6 +48,7 @@ export class ProyectoComponent implements OnInit {
   private obtenerProyectos() {
     this.proyectoServicio.getListaProyectos().subscribe(dato => {
       this.proyectos = dato;
+
     })
   }
 

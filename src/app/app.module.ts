@@ -21,6 +21,7 @@ import { ContactameComponent } from './components/contactame/contactame.componen
 import { FooterComponent } from './components/footer/footer.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import { ModalComponent } from './components/modal/modal.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { ToastrModule } from 'ngx-toastr';
     ProyectoComponent,
     ContactameComponent,
     FooterComponent,
+    ModalComponent,
   ],
   imports: [
     BrowserModule,
@@ -48,7 +50,6 @@ import { ToastrModule } from 'ngx-toastr';
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
     ReactiveFormsModule,
-    
 
   ],
   providers: [],

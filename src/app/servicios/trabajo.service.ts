@@ -8,7 +8,7 @@ import { Trabajo } from '../model/trabajo';
 })
 export class TrabajoService {
 
-  private baseURL = "http://localhost:8080/api/v1/";
+  private baseURL = "https://backendargprog.herokuapp.com/api/v1/";
 
   constructor(private httpClient : HttpClient) { }
 

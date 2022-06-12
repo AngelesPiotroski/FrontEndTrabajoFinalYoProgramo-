@@ -1,35 +1,15 @@
 <div class="profile" *ngFor="let persona of personas">
     <img src="{{persona.fotoPerfil}}" alt="" class="img-fluid rounded-circle" style="height: 100px; width: 100px;">
     <h1 class="text-light"><a href="index.html" *ngFor="let persona of personas">{{persona.nombre + " "+ persona.apellido}}</a></h1>
-    <div class="social-links mt-3 text-center" >
+    <button style="margin: 5px;" *ngIf="ulogged!=''" (click)="openModal()" class="btn botonesEdit btn-primary"><i class="bi bi-plus">Agregar Contacto</i></button>
+    <div class="social-links mt-3 text-center"  >
         <a href="#" *ngFor="let contacto of contactos"  href="{{contacto.url}}" target="_blank">
-            <i class="bx bxl-{{contacto.nombre}}"></i>   
+            <i class="bx bxl-{{contacto.nombre}}"></i>
+            <button style="margin: 5px;" *ngIf="ulogged!=''" (click)="eliminarContacto(contacto.id_contacto)" class="btn botonesEdit btn-danger"><i class="bi bi-trash"></i></button>
         </a>
     </div>
 </div>
 
-<!-- <div class="card" hidden >
-  <div class="card-body">
-    <h5 class="titulo">{{ accion | uppercase }} Contacto </h5>
-      <form [formGroup]="form" (ngSubmit)="guardarContacto()">
-        <div class="input-group input-group-lg mb-3">
-          <span class="input-group-text">
-            <i class="fas fa-user" [class.green-icon]="this.form.get('nombre')?.valid"
-              [class.red-icon]="this.form.get('nombre')?.invalid && this.form.get('nombre')?.touched"></i>
-          </span>
-          <input formControlName="nombre" type="text" class="form-control" placeholder="Nombre">
-        </div>
-        <div class="input-group input-group-lg mb-3">
-          <span class="input-group-text">
-            <i class="fas fa-user" [class.green-icon]="this.form.get('url')?.valid"
-              [class.red-icon]="this.form.get('url')?.invalid && this.form.get('url')?.touched"></i>
-          </span>
-          <input formControlName="url" type="text" class="form-control" placeholder="url">
-        </div>
-        <div class="d-grid gap-2">
-          <button [disabled]="this.form.invalid" type="submit" class="btn btn-success btn-lg">
-            <i class="fas fa-database"></i>&nbsp; Aceptar</button>
-        </div>
-      </form>
-  </div> 
-</div>-->
+<div *ngIf="modalSwitch == true">
+  <app-modal></app-modal>
+</div>

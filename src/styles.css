@@ -163,7 +163,7 @@ body {
     color: #149ddd;
   }
   
-  /* Mobile Navigation */
+  /* Mobile Navigation
   .mobile-nav-toggle {
     position: fixed;
     right: 15px;
@@ -190,7 +190,7 @@ body {
   }
   .mobile-nav-active #header {
     left: 0;
-  }
+  } */
   
   /*--------------------------------------------------------------
   # Hero Section

@@ -1,8 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { Contacto } from 'src/app/model/contacto';
 import { Persona } from 'src/app/model/persona';
 import { ContactoService } from 'src/app/servicios/contacto.service';
+import { LoginService } from 'src/app/servicios/login.service';
+import { ModalSwitchService } from 'src/app/servicios/modal-switch.service';
 import { PersonaService } from 'src/app/servicios/persona.service';
 
 @Component({
@@ -17,11 +21,20 @@ export class ContactoComponent implements OnInit {
   accion = 'Agregar';
   form: FormGroup;
   id_contacto: number | undefined;
-  constructor(private contactoServicio: ContactoService, private personaServicio: PersonaService) { }
+  ulogged:string = "";
+  modalSwitch: boolean;
+  constructor(public loginService: LoginService,private router:Router, private modalS: ModalSwitchService, 
+              private contactoServicio: ContactoService, private personaServicio: PersonaService,  private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.obtenercontactos();
     this.obtenerPersonas();
+    this.ulogged = this.loginService.getUserLogged();
+    this.modalS.$modal.subscribe((valor)=>{this.modalSwitch = valor })
+  }
+
+  openModal(){
+    this.modalSwitch= true;
   }
 
   public divAgregar() {
@@ -45,8 +58,14 @@ export class ContactoComponent implements OnInit {
     })
   }
 
-guardarContacto(){
-  
-}
+  eliminarContacto(id_contacto: number | any) {
+    this.contactoServicio.deleteContacto(id_contacto).subscribe(data => {
+      this.toastr.error('El contacto fue eliminado con exito!', 'Contacto eliminado');
+      this.obtenercontactos();
+      location.reload();
+    }, error => {
+      console.log(error);
+    })
+  }
 
 }

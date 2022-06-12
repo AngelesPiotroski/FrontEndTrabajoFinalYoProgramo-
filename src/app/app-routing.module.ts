@@ -7,6 +7,8 @@ import { ListaPersonasComponent } from './components/lista-personas/lista-person
 import { LoginComponent } from './components/login/login.component';
 import { MiPortfolioComponent } from './components/mi-portfolio/mi-portfolio.component';
 import { RegisterComponent } from './components/register/register.component';
+import { ModalComponent } from './components/modal/modal.component';
+
 
 const routes: Routes = [
   // {path : 'personas', component:ListaPersonasComponent},
@@ -14,7 +16,8 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'mi-portfolio', component: MiPortfolioComponent },
   { path: '', redirectTo: 'mi-portfolio', pathMatch: 'full' },
- 
+  { path: 'modal', component: ModalComponent },
+
 ];
 
 @NgModule({

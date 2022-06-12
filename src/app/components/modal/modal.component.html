@@ -1,0 +1,26 @@
+<div class="card">
+  <div class="card-body">
+    <h5 class="titulo">Agregar Contacto </h5>
+      <form [formGroup]="form" (ngSubmit)="guardarContacto()">
+        <div class="input-group input-group-lg mb-3">
+          <span class="input-group-text">
+            <i class="fas fa-user" [class.green-icon]="this.form.get('nombre')?.valid"
+              [class.red-icon]="this.form.get('nombre')?.invalid && this.form.get('nombre')?.touched"></i>
+          </span>
+          <input formControlName="nombre" type="text" class="form-control" placeholder="Nombre">
+        </div>
+        <div class="input-group input-group-lg mb-3">
+          <span class="input-group-text">
+            <i class="fas fa-user" [class.green-icon]="this.form.get('url')?.valid"
+              [class.red-icon]="this.form.get('url')?.invalid && this.form.get('url')?.touched"></i>
+          </span>
+          <input formControlName="url" type="text" class="form-control" placeholder="url">
+        </div>
+        <div class="d-grid gap-2">
+          <button [disabled]="this.form.invalid" type="submit" class="btn btn-success btn-lg">
+            <i class="fas fa-database"></i>&nbsp; Guardar</button>
+            <button  class="btn btn-success btn-lg" (click)="closeModal()">Cerrar</button>
+        </div>
+      </form>
+  </div> 
+</div>

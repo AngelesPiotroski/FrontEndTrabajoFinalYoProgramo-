@@ -4,22 +4,22 @@
             <h2>Contáctame </h2>
         </div>
         <div  data-aos="fade-in ">
-            <div class="col-lg-8 d-flex align-items-stretch ">
+            <div class="col-lg-8">
                 <div class="info ">
                     <div class="address" *ngFor="let persona of personas">
                         <i class="bi bi-geo-alt"></i>
                         <h4>Ubicación:</h4>
-                        <p>{{persona.domicilio}}</p>
+                        <p><a style=" text-decoration:none; color:black;">{{persona.domicilio}}</a></p>
                     </div>
                     <div class="email" *ngFor="let persona of personas">
                         <i class="bi bi-envelope"></i>
                         <h4>Email:</h4>
-                        <p>{{persona.email}}</p>
+                        <p><a href="{{persona.email}}" style=" text-decoration:none; color:black;">{{persona.email}}</a></p>
                     </div>
                     <div class="phone" *ngFor="let persona of personas">
                         <i class="bi bi-phone"></i>
-                        <h4>Telefono:</h4>
-                        <p>{{persona.telefono}}</p>
+                        <h4>Teléfono:</h4>
+                        <p><a href="tel:+{{persona.telefono}}" style=" text-decoration:none; color:black;">{{persona.telefono}}</a></p>
                     </div>
                 </div>
             </div>
